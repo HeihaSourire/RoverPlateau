@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+    <Appenders>
+        <!-- 将 JSON 事件写到标准错误，保持每行一个 JSON（NDJSON） -->
+        <Console name="JsonErr" target="SYSTEM_ERR">
+            <JsonLayout compact="true" eventEol="true" objectMessageAsJsonObject="true"/>
+        </Console>
+    </Appenders>
+    <Loggers>
+        <Root level="info">
+            <AppenderRef ref="JsonErr"/>
+        </Root>
+    </Loggers>
+</Configuration>
