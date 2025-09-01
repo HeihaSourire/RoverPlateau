@@ -72,10 +72,9 @@ and cause (line number, step number, coordinates, orientation).
 3. Case sensitivity: To enhance robustness, lowercase `l/r/m` and lowercase orientation `n/e/s/w` are acceptable
 4. Allow blank lines and extra spaces (trimmed during parsing).
 5. Save structured event in the log after every instruction.
-6. Record Mission_Summary in the log and print on the terminal after the end of execution.
-7. Collision: Upon completion of the preceding rover, its final position shall be deemed occupied; following rovers shall not enter that position.
+6. Collision: Upon completion of the preceding rover, its final position shall be deemed occupied; following rovers shall not enter that position.
    If the initial coordinates of the rover match the final coordinates of any completed rovers → this shall be deemed a collision.
-8. Execution: `java -jar rover.jar input.txt` `[--mode=fail-fast|fail-fast-per-rover(default)|skip-step]`
+7. Execution: `java -jar rover.jar input.txt` `11>positions.txt 2>logs.ndjson` `[--mode=fail-fast|fail-fast-per-rover(default)|skip-step]`
 
 ## Running Model ##
 | Model                         | Current Rover                                                | Following Rovers | Terminal Output                                                                                         | Logging                                | Exit Code                                        |
@@ -138,3 +137,6 @@ and cause (line number, step number, coordinates, orientation).
         | fault         | object | `{"type": OOB/OCCUPIED, "reason":}`                                                                             |
         | plateau       | object | `{ "maxX":int, "maxY":int }` (with `RUN_START`)                                                                 |
         | lines         | object | `{ "positionLine": int, "commandsLine": int }` (with `START_ROVER`)                                             |
+
+# Usage #
+`java -jar target/rover-all.jar input.txt 1>positions.txt 2>logs.ndjson`
